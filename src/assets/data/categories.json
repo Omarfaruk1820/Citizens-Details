@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Men's T-Shirts",
+    "slug": "mens-tshirts",
+    "image": "https://i.ibb.co.com/fGQg1wdy/brando-makes-branding-7-WE1-Lb-Sc4z-M-unsplash.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Men's Shirts",
+    "slug": "mens-shirts",
+    "image": "https://source.unsplash.com/400x400/?men,shirt"
+  },
+  {
+    "id": 3,
+    "name": "Men's Jeans",
+    "slug": "mens-jeans",
+    "image": "https://source.unsplash.com/400x400/?men,jeans"
+  },
+  {
+    "id": 4,
+    "name": "Men's Pants",
+    "slug": "mens-pants",
+    "image": "https://source.unsplash.com/400x400/?men,pants"
+  },
+  {
+    "id": 5,
+    "name": "Men's Panjabi",
+    "slug": "mens-panjabi",
+    "image": "https://source.unsplash.com/400x400/?panjabi,kurta"
+  },
+  {
+    "id": 6,
+    "name": "Men's Blazers",
+    "slug": "mens-blazers",
+    "image": "https://source.unsplash.com/400x400/?men,blazer"
+  },
+  {
+    "id": 7,
+    "name": "Women's Saree",
+    "slug": "womens-saree",
+    "image": "https://source.unsplash.com/400x400/?saree"
+  },
+  {
+    "id": 8,
+    "name": "Women's Salwar Kameez",
+    "slug": "womens-salwar-kameez",
+    "image": "https://source.unsplash.com/400x400/?salwar,kameez"
+  },
+  {
+    "id": 9,
+    "name": "Women's Kurti",
+    "slug": "womens-kurti",
+    "image": "https://source.unsplash.com/400x400/?kurti"
+  },
+  {
+    "id": 10,
+    "name": "Women's Tops",
+    "slug": "womens-tops",
+    "image": "https://source.unsplash.com/400x400/?women,top"
+  },
+  {
+    "id": 11,
+    "name": "Women's Jeans",
+    "slug": "womens-jeans",
+    "image": "https://source.unsplash.com/400x400/?women,jeans"
+  },
+  {
+    "id": 12,
+    "name": "Women's Dresses",
+    "slug": "womens-dresses",
+    "image": "https://source.unsplash.com/400x400/?dress"
+  },
+  {
+    "id": 13,
+    "name": "Women's Hijab",
+    "slug": "womens-hijab",
+    "image": "https://source.unsplash.com/400x400/?hijab"
+  },
+  {
+    "id": 14,
+    "name": "Kids Boys T-Shirts",
+    "slug": "kids-boys-tshirts",
+    "image": "https://source.unsplash.com/400x400/?kids,tshirt"
+  },
+  {
+    "id": 15,
+    "name": "Kids Boys Pants",
+    "slug": "kids-boys-pants",
+    "image": "https://source.unsplash.com/400x400/?kids,pants"
+  },
+  {
+    "id": 16,
+    "name": "Kids Boys Panjabi",
+    "slug": "kids-boys-panjabi",
+    "image": "https://source.unsplash.com/400x400/?kids,kurta"
+  },
+  {
+    "id": 17,
+    "name": "Kids Girls Dresses",
+    "slug": "kids-girls-dresses",
+    "image": "https://source.unsplash.com/400x400/?kids,dress"
+  },
+  {
+    "id": 18,
+    "name": "Kids Girls Frocks",
+    "slug": "kids-girls-frocks",
+    "image": "https://source.unsplash.com/400x400/?frock"
+  },
+  {
+    "id": 19,
+    "name": "Kids Girls Tops",
+    "slug": "kids-girls-tops",
+    "image": "https://source.unsplash.com/400x400/?kids,top"
+  },
+  {
+    "id": 20,
+    "name": "Baby Clothing",
+    "slug": "baby-clothing",
+    "image": "https://source.unsplash.com/400x400/?baby,clothes"
+  },
+  {
+    "id": 21,
+    "name": "Winter Jackets",
+    "slug": "winter-jackets",
+    "image": "https://source.unsplash.com/400x400/?jacket"
+  },
+  {
+    "id": 22,
+    "name": "Hoodies & Sweatshirts",
+    "slug": "hoodies-sweatshirts",
+    "image": "https://source.unsplash.com/400x400/?hoodie"
+  },
+  {
+    "id": 23,
+    "name": "Sportswear",
+    "slug": "sportswear",
+    "image": "https://source.unsplash.com/400x400/?sportswear"
+  },
+  {
+    "id": 24,
+    "name": "Formal Wear",
+    "slug": "formal-wear",
+    "image": "https://source.unsplash.com/400x400/?formal"
+  },
+  {
+    "id": 25,
+    "name": "Casual Wear",
+    "slug": "casual-wear",
+    "image": "https://source.unsplash.com/400x400/?casual"
+  },
+  {
+    "id": 26,
+    "name": "Ethnic Wear",
+    "slug": "ethnic-wear",
+    "image": "https://source.unsplash.com/400x400/?ethnic"
+  },
+  {
+    "id": 27,
+    "name": "Party Wear",
+    "slug": "party-wear",
+    "image": "https://source.unsplash.com/400x400/?party,dress"
+  },
+  {
+    "id": 28,
+    "name": "Underwear & Innerwear",
+    "slug": "innerwear",
+    "image": "https://source.unsplash.com/400x400/?underwear"
+  },
+  {
+    "id": 29,
+    "name": "Sleepwear",
+    "slug": "sleepwear",
+    "image": "https://source.unsplash.com/400x400/?sleepwear"
+  },
+  {
+    "id": 30,
+    "name": "Accessories",
+    "slug": "accessories",
+    "image": "https://source.unsplash.com/400x400/?fashion,accessories"
+  }
+]

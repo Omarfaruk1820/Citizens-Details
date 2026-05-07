@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import {
   FaEnvelope,
   FaLock,
@@ -8,66 +9,101 @@ import {
   FaEyeSlash,
   FaSignInAlt,
 } from "react-icons/fa";
+import { AuthContext } from "./AuthProvider";
+import SignInGoogle from "./SignInGoogle";
 
 const Login = () => {
+  const { userLogin, resetPassword } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
-    // এখানে backend API call করবেন
+  // ✅ Error handler
+  const getErrorMessage = (error) => {
+    if (error.code === "auth/user-not-found") return "User not found!";
+    if (error.code === "auth/wrong-password") return "Wrong password!";
+    if (error.code === "auth/invalid-email") return "Invalid email!";
+    return error.message || "Login failed!";
+  };
+
+  // ✅ Login
+  const onSubmit = async (data) => {
+    try {
+      await userLogin(data.email, data.password);
+
+      toast.success("Login successful 🎉");
+
+      setTimeout(() => navigate("/"), 1000);
+    } catch (error) {
+      toast.error(getErrorMessage(error));
+    }
+  };
+
+  // ✅ Forgot Password Handler
+  const handleForgotPassword = async () => {
+    const email = getValues("email");
+
+    if (!email) {
+      return toast.error("Please enter your email first!");
+    }
+
+    try {
+      await resetPassword(email);
+      toast.success("Password reset email sent 📩");
+    } catch (error) {
+      toast.error("Failed to send reset email!");
+    }
   };
 
   return (
-    <div className="min-h-screen  flex items-center justify-center bg-gradient-to-br from-gray-100 via-white to-gray-200 px-4 sm:px-6 lg:px-8">
-      
-      <div className="w-full max-w-md">
-        
-        {/* Card */}
-        <div className="bg-white/80 backdrop-blur-md shadow-xl rounded-2xl p-6 sm:p-8">
-          
+    <div className="min-h-screen grid md:grid-cols-2 bg-gray-100">
+      <Toaster position="top-center" />
+
+      {/* LEFT SIDE */}
+      <div className="hidden md:flex flex-col justify-center items-center bg-gradient-to-br from-primary to-indigo-600 text-white p-10">
+        <h1 className="text-4xl font-bold mb-4">Welcome Back 👋</h1>
+        <p className="text-lg opacity-90 text-center max-w-sm">
+          Login to continue your journey.
+        </p>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="flex items-center justify-center px-4 py-10">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+
           {/* Header */}
-          <div className="text-center mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-              Welcome Back 👋
-            </h2>
+          <div className="mb-6 text-center">
+            <h2 className="text-2xl font-bold text-gray-800">Login</h2>
             <p className="text-gray-500 text-sm mt-1">
-              Login to your account
+              Enter your credentials
             </p>
           </div>
 
-          {/* Form */}
+          {/* FORM */}
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-            
+
             {/* Email */}
             <div>
-              <label className="text-sm font-medium text-gray-600">
-                Email Address
-              </label>
-
-              <div className="mt-1 flex items-center border rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-primary">
-                <FaEnvelope className="text-gray-400 mr-2" />
+              <div className="relative">
+                <FaEnvelope className="absolute top-3 left-3 text-gray-400" />
                 <input
                   type="email"
-                  placeholder="Enter your email"
-                  className="w-full outline-none text-sm bg-transparent"
+                  placeholder="Email address"
+                  className="w-full pl-10 pr-3 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none"
                   {...register("email", {
                     required: "Email is required",
-                    pattern: {
-                      value: /^\S+@\S+$/i,
-                      message: "Invalid email address",
-                    },
                   })}
                 />
               </div>
-
               {errors.email && (
-                <p className="text-red-500 text-xs mt-1">
+                <p className="text-xs text-red-500 mt-1">
                   {errors.email.message}
                 </p>
               )}
@@ -75,62 +111,42 @@ const Login = () => {
 
             {/* Password */}
             <div>
-              <label className="text-sm font-medium text-gray-600">
-                Password
-              </label>
-
-              <div className="mt-1 flex items-center border rounded-xl px-3 py-2 focus-within:ring-2 focus-within:ring-primary">
-                <FaLock className="text-gray-400 mr-2" />
-
+              <div className="relative">
+                <FaLock className="absolute top-3 left-3 text-gray-400" />
                 <input
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
-                  className="w-full outline-none text-sm bg-transparent"
+                  placeholder="Password"
+                  className="w-full pl-10 pr-10 py-2.5 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none"
                   {...register("password", {
                     required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Minimum 6 characters required",
-                    },
                   })}
                 />
 
-                <button
-                  type="button"
+                <span
                   onClick={() => setShowPassword(!showPassword)}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-3 cursor-pointer text-gray-400"
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
+                </span>
               </div>
-
-              {errors.password && (
-                <p className="text-red-500 text-xs mt-1">
-                  {errors.password.message}
-                </p>
-              )}
             </div>
 
-            {/* Remember + Forgot */}
-            <div className="flex items-center justify-between text-sm">
-              <label className="flex items-center gap-2 text-gray-600">
-                <input type="checkbox" className="checkbox checkbox-sm" />
-                Remember me
-              </label>
-
-              <Link
-                to="/forgot-password"
+            {/* Forgot */}
+            <div className="flex justify-end text-sm">
+              <button
+                type="button"
+                onClick={handleForgotPassword}
                 className="text-primary hover:underline"
               >
                 Forgot password?
-              </Link>
+              </button>
             </div>
 
-            {/* Submit Button */}
+            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-70"
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg bg-primary text-white"
             >
               <FaSignInAlt />
               {isSubmitting ? "Logging in..." : "Login"}
@@ -144,21 +160,17 @@ const Login = () => {
             <div className="flex-1 h-px bg-gray-200"></div>
           </div>
 
-          {/* Social Button */}
-          <button className="w-full py-2.5 rounded-xl border text-sm font-medium hover:bg-gray-100 transition">
-            Continue with Google
-          </button>
+          {/* Google */}
+          <SignInGoogle />
 
           {/* Register */}
           <p className="text-center text-sm text-gray-500 mt-6">
             Don’t have an account?{" "}
-            <Link
-              to="/register"
-              className="text-primary font-medium hover:underline"
-            >
+            <Link to="/register" className="text-primary font-medium">
               Register
             </Link>
           </p>
+
         </div>
       </div>
     </div>
