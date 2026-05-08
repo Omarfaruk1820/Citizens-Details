@@ -203,15 +203,16 @@ const categories = [
     id: 30,
     name: "Accessories",
     slug: "accessories",
-    image: "https://source.unsplash.com/400x400/?fashion,accessories",
+    image:
+      "https://i.ibb.co.com/WvdBr7yV/top-view-travel-accessories-with-shoes-map-smartphone-with-mockup-screen-hat-tourist-essentials-phot.jpg",
   },
   {
     id: 31,
     name: "Longgi",
     slug: "longgi",
-    image:
-      "https://i.ibb.co.com/WvdBr7yV/top-view-travel-accessories-with-shoes-map-smartphone-with-mockup-screen-hat-tourist-essentials-phot.jpg",
+    image: "https://i.ibb.co.com/Zb6gjg6/download.webp",
   },
+
   {
     id: 32,
     name: "Ghamcha",
